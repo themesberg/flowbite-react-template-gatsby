@@ -1,3 +1,4 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   env: {
     browser: true,
@@ -6,26 +7,22 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended",
     "prettier",
   ],
   overrides: [
     {
-      env: {
-        node: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
-      },
+      files: ["**/*.{ts,tsx}"],
+      plugins: ["@typescript-eslint"],
+      parser: "@typescript-eslint/parser",
+      extends: ["plugin:@typescript-eslint/recommended"],
     },
   ],
   ignorePatterns: ["public"],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
+    sourceType: "module",
   },
   settings: {
     react: {
@@ -36,6 +33,6 @@ module.exports = {
       classRegex: "^(class(Name)|theme)?$",
     },
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["react"],
   rules: {},
 };
