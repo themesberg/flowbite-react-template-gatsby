@@ -1,4 +1,5 @@
 node_modules/
 .cache/
 public
+!public/*.svg
 src/gatsby-types.d.ts
